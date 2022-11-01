@@ -1,0 +1,28 @@
+class Random {
+    field int a,b,c,m;
+
+    constructor Random new() {
+        let a = 123;
+        let b = 012;
+        let c = 456;
+        let m = 789;
+        return this;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method int random(int n) {
+        let b = mod(a * b + c, m);
+        return mod(b, n);
+    }
+
+    method int mod(int a, int b) {
+        var int d, i;
+        let d = Math.divide(a,b);
+        let i = Math.multiply(d,b);
+        return a - i;
+    }
+}

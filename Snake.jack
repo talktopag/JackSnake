@@ -1,0 +1,79 @@
+class Snake {
+    field Array x_locns;
+    field Array y_locns;
+    field int snake_direction;
+    field int snake_length;
+
+    constructor Snake new() {
+        var int i;
+
+        let x_locns = Array.new(1400);
+        let y_locns = Array.new(1400);
+        let snake_direction = 0;
+        let snake_length = 4; // Length is minus 1 - to keep with array indexing
+        let i = 0;
+
+        while (i < 1400) {
+            if (i < 5) {
+                let x_locns[i] = 21 + i;
+                let y_locns[i] = 15;
+            }
+            else {
+                let x_locns[i] = 0;
+                let y_locns[i] = 0;
+            }
+            let i = i + 1;
+        }
+
+        return this;
+    }
+
+    method void moveSnake(int new_direction) {
+        let snake_direction = new_direction;
+
+        if (snake_direction = 1) { // Up
+
+        }
+
+        if (snake_direction = 2) { // Right
+            
+        }
+
+        if (snake_direction = 3) { // Down
+            
+        }
+
+        if (snake_direction = 4) { // Left
+            
+        }
+
+        return;
+    }
+
+    method void growSnake() {
+        let snake_length = snake_length + 1;
+
+        // direction dependent behavior
+        
+        return;
+    }
+
+    method boolean checkIfHead(int x_pos, int y_pos) {
+        var boolean isHead;
+        
+        let isHead = false;
+        return isHead;
+    }
+
+    method boolean checkIfBody(int x_pos, int y_pos) {
+        var boolean isBody;
+        
+        let isBody = false;
+        return isBody;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+}

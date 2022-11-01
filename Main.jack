@@ -1,0 +1,11 @@
+// Please be gentle. I'm a statistician, I barely know enough
+// python to be dangerous :)
+
+class Main {
+    function void main() {
+        var Snake snake;
+        let snake = Snake.new();
+        
+        return;
+    }
+}

@@ -10,7 +10,7 @@ class Snake {
 
         let x_locns = Array.new(1400);
         let y_locns = Array.new(1400);
-        let snake_direction = 0;
+        let snake_direction = 4;
         let current_seg = 0;
         let snake_max_seg = 4; // Length - 1
         let i = 0;
@@ -34,6 +34,8 @@ class Snake {
         var int head_x;
         var int head_y;
         var int i;
+
+        let i = 0;
 
         let head_x = x_locns[snake_max_seg];
         let head_y = y_locns[snake_max_seg];
@@ -111,8 +113,17 @@ class Snake {
 
     method boolean checkIfBody(int x_pos, int y_pos) {
         var boolean is_body;
+        var int i;
         
+        let i = 0;
         let is_body = false;
+
+        while (i < snake_max_seg) {
+            if ((x_pos = x_locns[i]) & (y_pos = y_locns[i])) {
+                let is_body = true;
+            }
+        }
+        
         return is_body;
     }
 
@@ -136,6 +147,10 @@ class Snake {
     method void resetSegCounter () {
         let current_seg = 0;
         return;
+    }
+
+    method int getSnakeLength() {
+        return snake_max_seg;
     }
 
     method void dispose() {

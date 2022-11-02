@@ -31,31 +31,69 @@ class Snake {
     }
 
     method void moveSnake(int new_direction) {
+        var int head_x;
+        var int head_y;
+        var int i;
+
+        let head_x = x_locns[snake_max_seg];
+        let head_y = y_locns[snake_max_seg];
+
         let snake_direction = new_direction;
 
         if (snake_direction = 1) { // Up
-
+            let head_y = head_y - 1;
         }
 
         if (snake_direction = 2) { // Right
-            
+            let head_x = head_x + 1;
         }
 
         if (snake_direction = 3) { // Down
-            
+            let head_y = head_y + 1;
         }
 
         if (snake_direction = 4) { // Left
-            
+            let head_x = head_x - 1;
         }
+
+        while (i < snake_max_seg) {
+            let x_locns[i] = x_locns[i + 1];
+            let y_locns[i] = y_locns[i + 1];
+        }
+        let x_locns[snake_max_seg] = head_x;
+        let y_locns[snake_max_seg] = head_y;
 
         return;
     }
 
-    method void growSnake() {
-        let snake_max_seg = snake_max_seg + 1;
+    method void growSnake(int new_direction) {
+        var int head_x;
+        var int head_y;
 
-        // direction dependent behavior
+        let head_x = x_locns[snake_max_seg];
+        let head_y = y_locns[snake_max_seg];
+
+        let snake_direction = new_direction;
+
+        if (snake_direction = 1) { // Up
+            let head_y = head_y - 1;
+        }
+
+        if (snake_direction = 2) { // Right
+            let head_x = head_x + 1;
+        }
+
+        if (snake_direction = 3) { // Down
+            let head_y = head_y + 1;
+        }
+
+        if (snake_direction = 4) { // Left
+            let head_x = head_x - 1;
+        }
+
+        let snake_max_seg = snake_max_seg + 1;
+        let x_locns[snake_max_seg] = head_x;
+        let y_locns[snake_max_seg] = head_y;
         
         return;
     }
@@ -63,7 +101,11 @@ class Snake {
     method boolean checkIfHead(int x_pos, int y_pos) {
         var boolean is_head;
         
-        let is_head = false;
+        if ((x_pos = x_locns[snake_max_seg]) & (y_pos = y_locns[snake_max_seg])) {
+            let is_head = true;
+        } else {
+            let is_head = false;
+        }
         return is_head;
     }
 
@@ -72,6 +114,28 @@ class Snake {
         
         let is_body = false;
         return is_body;
+    }
+
+    method Array getNextSegment () {
+        var Array seg_to_return;
+        var int seg_x;
+        var int seg_y;
+
+        let seg_x = x_locns[current_seg];
+        let seg_y = x_locns[current_seg];
+
+        let seg_to_return = Array.new(2);
+        let seg_to_return[0] = seg_x;
+        let seg_to_return[1] = seg_y;
+
+        let current_seg = current_seg + 1;
+
+        return seg_to_return;
+    }
+
+    method void resetSegCounter () {
+        let current_seg = 0;
+        return;
     }
 
     method void dispose() {

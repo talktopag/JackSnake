@@ -2,7 +2,8 @@ class Snake {
     field Array x_locns;
     field Array y_locns;
     field int snake_direction;
-    field int snake_length;
+    field int snake_max_seg;
+    field int current_seg;
 
     constructor Snake new() {
         var int i;
@@ -10,7 +11,8 @@ class Snake {
         let x_locns = Array.new(1400);
         let y_locns = Array.new(1400);
         let snake_direction = 0;
-        let snake_length = 4; // Length is minus 1 - to keep with array indexing
+        let current_seg = 0;
+        let snake_max_seg = 4; // Length - 1
         let i = 0;
 
         while (i < 1400) {
@@ -51,7 +53,7 @@ class Snake {
     }
 
     method void growSnake() {
-        let snake_length = snake_length + 1;
+        let snake_max_seg = snake_max_seg + 1;
 
         // direction dependent behavior
         
@@ -59,17 +61,17 @@ class Snake {
     }
 
     method boolean checkIfHead(int x_pos, int y_pos) {
-        var boolean isHead;
+        var boolean is_head;
         
-        let isHead = false;
-        return isHead;
+        let is_head = false;
+        return is_head;
     }
 
     method boolean checkIfBody(int x_pos, int y_pos) {
-        var boolean isBody;
+        var boolean is_body;
         
-        let isBody = false;
-        return isBody;
+        let is_body = false;
+        return is_body;
     }
 
     method void dispose() {

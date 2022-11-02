@@ -1,0 +1,18 @@
+class GameScreen {
+    field int width, height, blocksize;
+
+    constructor GameScreen new() {
+        let width = 512;
+        let height = 256;
+        let blocksize = 8;    
+        return this;
+    }
+
+    method void drawGameScreen(){
+        return;
+    }
+
+    method void drawSnake(Snake snake) {
+        return;
+    }
+}

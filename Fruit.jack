@@ -1,0 +1,18 @@
+class Fruit {
+    field Array x_locn;
+    field Array y_locn;
+
+    constructor Fruit new() {
+        let x_locn = 5;
+        let y_locn = 5;
+        return this;
+    }
+
+    method void update() {
+        return;
+    }
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+}

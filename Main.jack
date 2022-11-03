@@ -4,7 +4,14 @@
 class Main {
     function void main() {
         var Snake snake;
+        var GameScreen game_screen;
+        
         let snake = Snake.new();
+        let game_screen = GameScreen.new();
+        
+        do game_screen.drawGameScreen();
+        do game_screen.drawScore(00000);
+        do game_screen.drawSnake(snake);
         
         return;
     }

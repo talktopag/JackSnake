@@ -1,14 +1,45 @@
 class GameScreen {
-    field int width, height, blocksize;
+    field int width, height, blocksize, play_x, play_y, blocksize;
+    field String snek;
 
     constructor GameScreen new() {
-        let width = 512;
-        let height = 256;
-        let blocksize = 8;    
+        let width = 511;
+        let height = 255;
+        let play_y = 3;
+        let play_x = 135;
+        let blocksize = 8;
         return this;
     }
 
     method void drawGameScreen(){
+
+        do Screen.setColor(true);
+        do Screen.drawRectangle(play_x-3, play_y-3, width, height);
+        do Screen.setColor(false);
+        do Screen.drawRectangle(play_x-2, play_y-2, width-1, height-1);
+        do Screen.setColor(true);
+        do Screen.drawRectangle(play_x-1, play_y-1, width-2, height-2);
+        do Screen.setColor(false);
+        do Screen.drawRectangle(play_x, play_y, width-3, height-3);
+
+        do Screen.setColor(true);
+        do Output.moveCursor(1,6);
+        do Output.printString("Snek");
+        do Output.moveCursor(2,7);
+        do Output.printString("by");
+        do Output.moveCursor(3,3);
+        do Output.printString("Alan Paget");
+
+        do Output.moveCursor(5,2);
+        do Output.printString("Score: ");
+        return;
+    }
+
+    method void drawScore(int Score) {
+        do Output.moveCursor(5,9);
+        do Output.printString("     ");
+        do Output.moveCursor(5,9);
+        do Output.printString("00000"); // Placeholder
         return;
     }
 

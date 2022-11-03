@@ -39,15 +39,19 @@ class GameScreen {
         return;
     }
 
+
+    method void playfieldRefresh() {
+        do Screen.setColor(false);
+        do Screen.drawRectangle(play_x, play_y, width-3, height-3);
+        return;
+    }
+
     method void drawSnake(Snake snake) {
         var int snake_length, i;
         var int snake_part_x;
         var int snake_part_y;
         var int x_draw_pos;
         var int y_draw_pos;
-        
-        do Screen.setColor(false);
-        do Screen.drawRectangle(play_x, play_y, width-3, height-3);
 
         let snake_length = snake.getSnakeLength() + 1; 
         let i = 0;
@@ -68,6 +72,10 @@ class GameScreen {
 
         do snake.resetSegCounter();
 
+        return;
+    }
+
+    method void drawFruit() {
         return;
     }
 }

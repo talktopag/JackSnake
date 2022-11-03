@@ -20,14 +20,16 @@ class Main {
         // Game loop
         while (true) {
 
+        do game_screen.playfieldRefresh();
         do game_screen.drawScore(score);
         do game_screen.drawSnake(snake);
+        do game_screen.drawFruit();
 
         let key = Keyboard.keyPressed();
-        if (key = 131) {let new_direction = 1;}   // up arrow
-        if (key = 133) {let new_direction = 3;}   // down arrow
-        if (key = 130) {let new_direction = 4;}   // left arrow
-        if (key = 132) {let new_direction = 2;}   // right arrow
+        if ((key = 131) & ~(new_direction = 3)) {let new_direction = 1;}   // up arrow
+        if ((key = 133) & ~(new_direction = 1)) {let new_direction = 3;}   // down arrow
+        if ((key = 130) & ~(new_direction = 2)) {let new_direction = 4;}   // left arrow
+        if ((key = 132) & ~(new_direction = 4)) {let new_direction = 2;}   // right arrow
         
         if (key = 32) {
             do snake.growSnake(new_direction);

@@ -61,6 +61,7 @@ class Snake {
         while (i < snake_max_seg) {
             let x_locns[i] = x_locns[i + 1];
             let y_locns[i] = y_locns[i + 1];
+            let i = i + 1;
         }
         let x_locns[snake_max_seg] = head_x;
         let y_locns[snake_max_seg] = head_y;
@@ -74,7 +75,6 @@ class Snake {
 
         let head_x = x_locns[snake_max_seg];
         let head_y = y_locns[snake_max_seg];
-
         let snake_direction = new_direction;
 
         if (snake_direction = 1) { // Up
@@ -127,21 +127,25 @@ class Snake {
         return is_body;
     }
 
-    method Array getNextSegment () {
+    method int getNextSegmentX () {
         var Array seg_to_return;
         var int seg_x;
-        var int seg_y;
 
         let seg_x = x_locns[current_seg];
-        let seg_y = x_locns[current_seg];
+        return seg_x;
+    }
 
-        let seg_to_return = Array.new(2);
-        let seg_to_return[0] = seg_x;
-        let seg_to_return[1] = seg_y;
+    method int getNextSegmentY () {
+        var Array seg_to_return;
+        var int seg_y;
 
+        let seg_y = y_locns[current_seg];
+        return seg_y;
+    }
+
+    method void incSegCounter () {
         let current_seg = current_seg + 1;
-
-        return seg_to_return;
+        return;
     }
 
     method void resetSegCounter () {

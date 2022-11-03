@@ -3,9 +3,10 @@
 
 class Main {
     function void main() {
-        field int score;
-        
+        var int score;
         var Snake snake;
+        var char key;
+        var int new_direction;
         var GameScreen game_screen;
         
         let snake = Snake.new();
@@ -13,11 +14,29 @@ class Main {
         
         // Init
         do game_screen.drawGameScreen();
+        let score = 0;
+        let new_direction = 1;
         
         // Game loop
         while (true) {
-        do game_screen.drawScore(00000);
+
+        do game_screen.drawScore(score);
         do game_screen.drawSnake(snake);
+
+        let key = Keyboard.keyPressed();
+        if (key = 131) {let new_direction = 1;}   // up arrow
+        if (key = 133) {let new_direction = 3;}   // down arrow
+        if (key = 130) {let new_direction = 4;}   // left arrow
+        if (key = 132) {let new_direction = 2;}   // right arrow
+        
+        if (key = 32) {
+            do snake.growSnake(new_direction);
+        } 
+        else {
+            do snake.moveSnake(new_direction);
+        }
+        
+        do Sys.wait(100);
         }
 
         return;

@@ -36,10 +36,6 @@ class GameScreen {
     }
 
     method void drawScore(int Score) {
-        do Output.moveCursor(5,9);
-        do Output.printString("     ");
-        do Output.moveCursor(5,9);
-        do Output.printString("00000"); // Placeholder
         return;
     }
 

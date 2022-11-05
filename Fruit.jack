@@ -1,6 +1,6 @@
 class Fruit {
-    field Array x_locn;
-    field Array y_locn;
+    field int x_locn;
+    field int y_locn;
 
     constructor Fruit new() {
         let x_locn = 5;
@@ -8,7 +8,9 @@ class Fruit {
         return this;
     }
 
-    method void update() {
+    method void update(Random random) {
+        let x_locn = random.random(47);
+        let y_locn = random.random(31);
         return;
     }
     method void dispose() {

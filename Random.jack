@@ -1,11 +1,11 @@
 class Random {
-    field int a,b,c,m;
+    field int f,a,b,c;
 
     constructor Random new() {
-        let a = 123;
-        let b = 012;
-        let c = 456;
-        let m = 789;
+        let f = 42;
+        let a = 84;
+        let b = 168;
+        let c = 99;
         return this;
     }
 
@@ -15,8 +15,8 @@ class Random {
     }
 
     method int random(int n) {
-        let b = mod(a * b + c, m);
-        return mod(b, n);
+        let f = mod(f * a + b, c);
+        return mod(f, n);
     }
 
     method int mod(int a, int b) {

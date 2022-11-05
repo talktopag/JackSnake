@@ -1,6 +1,5 @@
 class GameScreen {
     field int width, height, blocksize, play_x, play_y, blocksize;
-    field String snek;
 
     constructor GameScreen new() {
         let width = 511;
@@ -30,8 +29,8 @@ class GameScreen {
         do Output.moveCursor(3,3);
         do Output.printString("Alan Paget");
 
-        do Output.moveCursor(5,2);
-        do Output.printString("Score: ");
+        // do Output.moveCursor(5,2);
+        // do Output.printString("Score: ");
         return;
     }
 
@@ -90,6 +89,11 @@ class GameScreen {
         do Screen.setColor(false);
         do Screen.drawRectangle(fruit_part_x+1, fruit_part_y+1, fruit_part_x + (blocksize - 3), fruit_part_y + (blocksize - 3));
 
+        return;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
         return;
     }
 }

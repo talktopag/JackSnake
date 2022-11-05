@@ -161,4 +161,35 @@ class Snake {
         do Memory.deAlloc(this);
         return;
     }
+
+    method boolean nextMoveLegal (int new_direction) {
+        var int head_x;
+        var int head_y;
+
+        let head_x = x_locns[snake_max_seg];
+        let head_y = y_locns[snake_max_seg];
+        let snake_direction = new_direction;
+
+        if (snake_direction = 1) { // Up
+            let head_y = head_y - 1;
+        }
+
+        if (snake_direction = 2) { // Right
+            let head_x = head_x + 1;
+        }
+
+        if (snake_direction = 3) { // Down
+            let head_y = head_y + 1;
+        }
+
+        if (snake_direction = 4) { // Left
+            let head_x = head_x - 1;
+        }
+        
+        if ((head_x > 46) | (head_x < 0) | (head_y > 30) | (head_y < 0)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

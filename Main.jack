@@ -6,43 +6,65 @@ class Main {
         var int score;
         var Snake snake;
         var Fruit fruit;
+        var Random random;
         var char key;
+        var boolean game_state;
         var int new_direction;
         var GameScreen game_screen;
         
-        let snake = Snake.new();
-        let fruit = Fruit.new();
-        let game_screen = GameScreen.new();
-        
-        // Init
-        do game_screen.drawGameScreen();
-        let score = 0;
-        let new_direction = 1;
-        
         // Game loop
-        while (true) {
+        while (true) {   
 
-        do game_screen.playfieldRefresh();
-        do game_screen.drawScore(score);
-        do game_screen.drawSnake(snake);
-        do game_screen.drawFruit(fruit);
+            // Init
+            let snake = Snake.new();
+            let random = Random.new();
+            let fruit = Fruit.new();
+            let game_screen = GameScreen.new();
+            let score = 0;
+            let new_direction = 1;
+            let game_state = true;
 
-        let key = Keyboard.keyPressed();
-        if ((key = 131) & ~(new_direction = 3)) {let new_direction = 1;}   // up arrow
-        if ((key = 133) & ~(new_direction = 1)) {let new_direction = 3;}   // down arrow
-        if ((key = 130) & ~(new_direction = 2)) {let new_direction = 4;}   // left arrow
-        if ((key = 132) & ~(new_direction = 4)) {let new_direction = 2;}   // right arrow
-        
-        if (key = 32) {
-            do snake.growSnake(new_direction);
-        } 
-        else {
-            do snake.moveSnake(new_direction);
+            do game_screen.drawGameScreen();
+            do fruit.update(random);
+
+            while (game_state) {
+                do game_screen.playfieldRefresh();
+                do game_screen.drawScore(score);
+                do game_screen.drawSnake(snake);
+                do game_screen.drawFruit(fruit);
+
+                let key = Keyboard.keyPressed();
+                if ((key = 131) & ~(new_direction = 3)) {let new_direction = 1;}   // up arrow
+                if ((key = 133) & ~(new_direction = 1)) {let new_direction = 3;}   // down arrow
+                if ((key = 130) & ~(new_direction = 2)) {let new_direction = 4;}   // left arrow
+                if ((key = 132) & ~(new_direction = 4)) {let new_direction = 2;}   // right arrow
+
+                if (snake.checkIfHead(fruit.getX(), fruit.getY())) {
+                    do snake.growSnake(new_direction);
+                    do fruit.update(random);
+                    let score = score + 10;
+                }
+
+                if (snake.nextMoveLegal(new_direction)) {
+                    do snake.moveSnake(new_direction);
+                } 
+                else {
+                    let game_state = false;
+                }
+                
+                do Sys.wait(100);
+            }
+
+            // Game Over Bit
+            do Output.moveCursor(12,24);
+            do Output.printString("U DED. GAME OVER");
+            do Sys.wait(5000);
+            do fruit.dispose();
+            do snake.dispose();
+            do game_screen.dispose();
+            do random.dispose();
+
         }
-        
-        do Sys.wait(100);
-        }
-
         return;
     }
 }

@@ -5,11 +5,13 @@ class Main {
     function void main() {
         var int score;
         var Snake snake;
+        var Fruit fruit;
         var char key;
         var int new_direction;
         var GameScreen game_screen;
         
         let snake = Snake.new();
+        let fruit = Fruit.new();
         let game_screen = GameScreen.new();
         
         // Init
@@ -23,7 +25,7 @@ class Main {
         do game_screen.playfieldRefresh();
         do game_screen.drawScore(score);
         do game_screen.drawSnake(snake);
-        do game_screen.drawFruit();
+        do game_screen.drawFruit(fruit);
 
         let key = Keyboard.keyPressed();
         if ((key = 131) & ~(new_direction = 3)) {let new_direction = 1;}   // up arrow

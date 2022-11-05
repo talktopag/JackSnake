@@ -75,7 +75,21 @@ class GameScreen {
         return;
     }
 
-    method void drawFruit() {
+    method void drawFruit(Fruit fruit) {
+        var int fruit_part_x;
+        var int fruit_part_y;
+
+        let fruit_part_x = fruit.getX();
+        let fruit_part_y = fruit.getY();
+        
+        let fruit_part_x = play_x + (fruit_part_x * blocksize);
+        let fruit_part_y = play_y + (fruit_part_y * blocksize);
+
+        do Screen.setColor(true);
+        do Screen.drawRectangle(fruit_part_x, fruit_part_y, fruit_part_x + (blocksize - 2), fruit_part_y + (blocksize - 2));
+        do Screen.setColor(false);
+        do Screen.drawRectangle(fruit_part_x+1, fruit_part_y+1, fruit_part_x + (blocksize - 3), fruit_part_y + (blocksize - 3));
+
         return;
     }
 }

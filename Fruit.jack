@@ -15,4 +15,12 @@ class Fruit {
         do Memory.deAlloc(this);
         return;
     }
+
+    method int getX() {
+        return x_locn;
+    }
+
+    method int getY() {
+        return y_locn;
+    }
 }

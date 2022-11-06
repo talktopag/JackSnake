@@ -1,9 +1,10 @@
-// Please be gentle. I'm a statistician, I barely know enough
-// python to be dangerous :)
+// JACK Project for Nand2Tetris
+// Alan Paget 16 NOV 2022
 
 class Main {
     function void main() {
         var int score;
+        var String score_str;
         var Snake snake;
         var Fruit fruit;
         var Random random;
@@ -21,6 +22,7 @@ class Main {
             let fruit = Fruit.new();
             let game_screen = GameScreen.new();
             let score = 0;
+            do game_screen.drawScore(score);
             let new_direction = 1;
             let game_state = true;
 
@@ -29,7 +31,6 @@ class Main {
 
             while (game_state) {
                 do game_screen.playfieldRefresh();
-                do game_screen.drawScore(score);
                 do game_screen.drawSnake(snake);
                 do game_screen.drawFruit(fruit);
 
@@ -43,6 +44,7 @@ class Main {
                     do snake.growSnake(new_direction);
                     do fruit.update(random);
                     let score = score + 10;
+                    do game_screen.drawScore(score);
                 }
 
                 if (snake.nextMoveLegal(new_direction)) {

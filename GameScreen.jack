@@ -1,5 +1,6 @@
 class GameScreen {
     field int width, height, blocksize, play_x, play_y, blocksize;
+    field String score_str;
 
     constructor GameScreen new() {
         let width = 511;
@@ -7,6 +8,7 @@ class GameScreen {
         let play_y = 3;
         let play_x = 135;
         let blocksize = 8;
+        let score_str = String.new(5);
         return this;
     }
 
@@ -29,12 +31,17 @@ class GameScreen {
         do Output.moveCursor(3,3);
         do Output.printString("Alan Paget");
 
-        // do Output.moveCursor(5,2);
-        // do Output.printString("Score: ");
+        do Output.moveCursor(5,2);
+        do Output.printString("Score: ");
         return;
     }
 
-    method void drawScore(int Score) {
+    method void drawScore(int score) {
+        do score_str.setInt(score);
+        do Output.moveCursor(5,9);
+        do Output.printString("     ");
+        do Output.moveCursor(5,9);
+        do Output.printString(score_str);
         return;
     }
 
